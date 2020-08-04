@@ -1,9 +1,5 @@
 pipeline {
-    agent {
-        node {
-            label 'java-node'
-        }
-    }
+    agent any
     stages {
         stage('list repo files') {
             steps {
@@ -58,10 +54,10 @@ pipeline {
         stage('runn docker container for assignment') {
             steps {
                 script {
-                    sh "ssh -i /home/ubuntu/madhur.pem ubuntu@100.26.227.164 sudo docker pull 10141730/helloworld:v_${BUILD_NUMBER}"
-                    sh "ssh -i /home/ubuntu/madhur.pem ubuntu@100.26.227.164 sudo docker kill hello-world"
-                    sh "ssh -i /home/ubuntu/madhur.pem ubuntu@100.26.227.164 sudo docker rm hello-world"
-                    sh "ssh -i /home/ubuntu/madhur.pem ubuntu@100.26.227.164 sudo docker run -it -p 8080:8080 --name hello-world -d 10141730/helloworld:v_${BUILD_NUMBER}"
+                    sh "ssh -i /home/ubuntu/madhur.pem ubuntu@54.146.86.241 sudo docker pull 10141730/helloworld:v_${BUILD_NUMBER}"
+                    sh "ssh -i /home/ubuntu/madhur.pem ubuntu@54.146.86.241 sudo docker kill hello-world"
+                    sh "ssh -i /home/ubuntu/madhur.pem ubuntu@54.146.86.241 sudo docker rm hello-world"
+                    sh "ssh -i /home/ubuntu/madhur.pem ubuntu@54.146.86.241 sudo docker run -it -p 8080:8080 --name hello-world -d 10141730/helloworld:v_${BUILD_NUMBER}"
                 }
             }
         }
